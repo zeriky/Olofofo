@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+{% block title%} HOME {%endblock%}
+
+{% block content %}
+<div class="row">
+    {% for item in a_list %}
+    <div class="col-sm-2 col-md-5 mr-auto ml-auto">
+        <div class="card" style="width: 18rem;">
+            {% if item.image %}
+            <img src="{{ item.image.url }}" class="img-fluid" alt="...">
+            {% endif %}
+            <div class="card-body">
+                <a href="{{ item.get_absolute_url }}" class="card-title text-center">{{ item.title}}</a>
+                <p>
+                    {{item.updated_on}}
+                </p>
+            </div>
+        </div>
+        <br>
+    </div>
+    {% endfor %}
+</div>
+
+<br>
+
+<nav aria-label="Page navigation example">
+    <div class="pagination justify-content-center">
+        <div class="pagination">
+    <span class="step-links">
+        {% if a_list.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ a_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q}}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ a_list.number }} of {{ a_list.paginator.num_pages }}.
+        </span>
+
+        {% if a_list.has_next %}
+            <a href="?page={{ a_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q}}{% endif %}">next</a>
+            <a href="?page={{ a_list.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+        </div>
+
+    </div>
+</nav>
+{% endblock %}

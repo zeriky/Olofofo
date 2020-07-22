@@ -1,0 +1,43 @@
+{% extends 'base.html'%}
+
+
+{% block content %}
+<br>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <p class="text-uppercase font-weight-bold text-center">
+                {{ q.title }}
+            </p>
+            <div class="card-body">
+                <p class="text-center">
+                    {% if q.image %}
+                    <img src="{{ q.image1.url }}" class="rounded float-left img-fluid" alt="loading"
+                         style="width: 18rem;">
+                    {% endif %}
+                    {{ q.content }}
+                    {% if q.image %}
+                    <img src="{{ q.image2.url }}" class="rounded float-center img-fluid" alt="..."
+                         style="width: 18rem;">
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="card-footer bg-dark border-success text-white">
+            {{ q.updated_on }}<br>
+            <p> Publish by {{ q.author }}luwaranti seriki </p>
+            <p class="text-uppercase font-weight-bold text-white"> follow me on
+                <a class="btn-floating btn-lg-btn-tw" type="button" role="button"
+                   href="https://www.instagram.com/serikioluwaranti"><i
+                        class="fa fa-instagram text-info mr-4"></i> </a>
+                <a class="btn-floating btn-lg-btn-tw" type="button" role="button"
+                   href="https://www.twitter.com/serikioluwaranti"><i
+                        class="fa fa-twitter text-Primary "></i> </a>
+            </p>
+
+        </div>
+    </div>
+</div>
+
+{% endblock%}
